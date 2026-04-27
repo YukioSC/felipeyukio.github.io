@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felipe Takamoto | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-purple: #818cf8;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background animated gradient */
+        .bg-glow {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.1), transparent 60%),
+                        radial-gradient(circle at 80% 20%, rgba(129, 140, 248, 0.15), transparent 50%);
+            z-index: -1;
+            animation: pulse 15s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-muted);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Glassmorphism Cards */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .date {
+            font-size: 0.9rem;
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: var(--bg-color);
+        }
+
+        /* Scroll Animation Classes */
+        .hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <header class="hidden">
+        <h1>Felipe Yukio da Silva Takamoto [cite: 1]</h1>
+        <div class="subtitle">Gestor de Projetos - Scrum Master </div>
+        <div class="contact-info">
+            <span>Brasília, DF [cite: 3]</span>
+            <span>felipeyukiodasilvatakamoto@gmail.com [cite: 4]</span>
+            <span>(61) 99352-0711 [cite: 4]</span>
+        </div>
+        <p style="max-width: 600px; color: var(--text-muted); font-size: 1.1rem;">
+            Profissional de Tecnologia com atuação estratégica na intersecção entre desenvolvimento de sistemas e gestão ágil. [cite: 8] Focado na melhoria contínua de processos e na entrega de valor mensurável. [cite: 12, 13]
+        </p>
+    </header>
+
+    <main class="container">
+        
+        <section id="experiencia">
+            <h2 class="section-title hidden">Experiência Profissional [cite: 14]</h2>
+
+            <div class="card hidden">
+                <h3>Gestor de Projetos [cite: 15]</h3>
+                <span class="date">Sinerji Gestão e Sistemas | Maio 2025 - Presente [cite: 15, 16]</span>
+                <p>Lidero cerimônias ágeis estratégicas e gerencio o backlog em parceria com POs. [cite: 17, 18] <strong>Reduzi em 70% a taxa de retrabalho e bugs</strong> ao reestruturar o fluxo de qualidade e aprovação de tarefas. [cite: 19] Monitoro a performance da equipe via Jira e garanto que a documentação no Confluence acelere o desenvolvimento. [cite: 20, 21]</p>
+            </div>
+
+            <div class="card hidden">
+                <h3>PMO de Inovação & Transformação Digital [cite: 22]</h3>
+                <span class="date">Brasal Refrigerantes | Out 2023 - Out 2024 [cite: 22, 28]</span>
+                <p>Liderei a transformação digital na Diretoria Financeira focando em soluções de automação. [cite: 23] Gerenciei um <strong>projeto pioneiro de Inteligência Artificial</strong> para automação de paleteiras (logística 4.0). [cite: 24] Orquestrei o ciclo de vida dos projetos utilizando Jira, Kanban e Confluence. [cite: 26]</p>
+            </div>
+
+            <div class="card hidden">
+                <h3>Técnico em Informática / Suporte Especializado [cite: 30]</h3>
+                <span class="date">Arte Foto Formaturas | Jan 2022 - Out 2023 [cite: 29, 30]</span>
+                <p>Garanti a continuidade operacional com suporte ágil Nível 1 e 2. [cite: 32] Executei planos de manutenção preventiva e atuei como ponto focal para resolução de incidentes. [cite: 33, 34]</p>
+            </div>
+            
+            <div class="card hidden">
+                <h3>Estagiário em Análise e Desenvolvimento [cite: 35]</h3>
+                <span class="date">Secretaria de Educação | Nov 2020 - Nov 2021 [cite: 35, 36]</span>
+                <p>Desenvolvi e implantei software para gestão do "Arquivo Morto", modernizando processos analógicos. [cite: 37, 38] Otimizei o fluxo de atendimento técnico reduzindo o tempo de resposta. [cite: 39]</p>
+            </div>
+        </section>
+
+        <section id="habilidades" style="margin-top: 4rem;">
+            <h2 class="section-title hidden">Competências Técnicas [cite: 48]</h2>
+            <div class="skills-container hidden">
+                <div class="skill-tag">Scrum [cite: 46]</div>
+                <div class="skill-tag">Metodologias Ágeis [cite: 46]</div>
+                <div class="skill-tag">Jira / Confluence [cite: 46]</div>
+                <div class="skill-tag">Python [cite: 46]</div>
+                <div class="skill-tag">JavaScript [cite: 46]</div>
+                <div class="skill-tag">AWS [cite: 46]</div>
+                <div class="skill-tag">Análise de Dados [cite: 46]</div>
+                <div class="skill-tag">RPA [cite: 46]</div>
+                <div class="skill-tag">SQL [cite: 46]</div>
+                <div class="skill-tag">Git / Github [cite: 46]</div>
+            </div>
+        </section>
+
+        <section id="educacao" style="margin-top: 4rem;">
+            <h2 class="section-title hidden">Formação [cite: 40]</h2>
+            <div class="card hidden">
+                <h3>Ciência da Computação (Bacharelado) [cite: 42]</h3>
+                <span class="date">UDF Centro Universitário | Jan 2022 - Dez 2026 [cite: 41, 52]</span>
+            </div>
+            <div class="card hidden">
+                <h3>Análise e Desenvolvimento de Sistemas (Tecnólogo) [cite: 44]</h3>
+                <span class="date">Unicesumar | Jan 2021 - Nov 2022 [cite: 43, 53]</span>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
