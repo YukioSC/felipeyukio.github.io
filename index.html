@@ -7,32 +7,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* Variáveis do Tema Escuro */
+        /* --- Variáveis de Tema --- */
         :root {
-            --bg-color: #0f172a;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
-            --accent-purple: #818cf8;
-            --glass-bg: rgba(15, 23, 42, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-color: #0f172a; --text-main: #f8fafc; --text-muted: #94a3b8;
+            --accent: #38bdf8; --accent-purple: #818cf8;
+            --glass-bg: rgba(15, 23, 42, 0.6); --glass-border: rgba(255, 255, 255, 0.1);
             --nav-bg: rgba(15, 23, 42, 0.8);
-            --bg-overlay-1: rgba(15, 23, 42, 0.9);
-            --bg-overlay-2: rgba(15, 23, 42, 0.9);
+            --bg-overlay-1: rgba(15, 23, 42, 0.9); --bg-overlay-2: rgba(15, 23, 42, 0.9);
         }
 
-        /* Variáveis do Tema Claro */
         body.light-mode {
-            --bg-color: #f1f5f9;
-            --text-main: #0f172a;
-            --text-muted: #334155;
-            --accent: #0284c7;
-            --accent-purple: #4f46e5;
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(0, 0, 0, 0.1);
+            --bg-color: #f1f5f9; --text-main: #0f172a; --text-muted: #334155;
+            --accent: #0284c7; --accent-purple: #4f46e5;
+            --glass-bg: rgba(255, 255, 255, 0.7); --glass-border: rgba(0, 0, 0, 0.1);
             --nav-bg: rgba(255, 255, 255, 0.8);
-            --bg-overlay-1: rgba(241, 245, 249, 0.85);
-            --bg-overlay-2: rgba(241, 245, 249, 0.95);
+            --bg-overlay-1: rgba(241, 245, 249, 0.85); --bg-overlay-2: rgba(241, 245, 249, 0.95);
         }
 
         html { scroll-behavior: smooth; scroll-padding-top: 100px; }
@@ -45,76 +34,71 @@
             transition: background-color 0.5s, color 0.5s;
         }
 
-        /* Cursor & Flutuantes */
+        /* --- Custom Cursor & Floats --- */
         .custom-cursor {
-            position: fixed; top: 0; left: 0; width: 25px; height: 25px;
-            border: 2px solid var(--accent); border-radius: 50%; pointer-events: none;
-            transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s;
-            z-index: 9999; box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+            position: fixed; top: 0; left: 0; width: 25px; height: 25px; border: 2px solid var(--accent); border-radius: 50%;
+            pointer-events: none; transform: translate(-50%, -50%); transition: 0.2s; z-index: 9999; box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
         }
         .custom-cursor.hovering { width: 45px; height: 45px; background-color: rgba(56, 189, 248, 0.1); }
 
-        .floating-icon {
-            position: fixed; color: rgba(56, 189, 248, 0.05); font-size: 4rem;
-            z-index: -1; user-select: none; animation: float 20s infinite linear;
-        }
+        .floating-icon { position: fixed; color: rgba(56, 189, 248, 0.05); font-size: 4rem; z-index: -1; animation: float 20s infinite linear; }
         .icon-1 { top: 15%; left: 5%; animation-duration: 25s; }
         .icon-2 { top: 75%; left: 85%; animation-duration: 30s; }
         @keyframes float { 0% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-40px) rotate(180deg); } 100% { transform: translateY(0) rotate(360deg); } }
 
-        /* Navbar */
+        /* --- Navbar --- */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; padding: 1rem 2rem; background: var(--nav-bg);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border);
-            display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: background 0.5s;
+            backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border);
+            display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.5s;
         }
         .nav-logo { font-size: 1.5rem; font-weight: 800; color: var(--accent); text-decoration: none; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
         .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
-        
         #theme-toggle { background: none; border: none; color: var(--text-main); font-size: 1.2rem; outline: none; transition: 0.3s; }
         #theme-toggle:hover { color: var(--accent); transform: scale(1.1); }
 
-        /* Header */
-        header {
-            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center; padding: 2rem; padding-top: 6rem;
-        }
+        /* --- Header --- */
+        header { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; padding-top: 6rem; }
         .profile-pic { width: 170px; height: 170px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent); box-shadow: 0 0 25px rgba(56, 189, 248, 0.3); margin-bottom: 2rem; }
         h1 { font-size: 3.5rem; font-weight: 800; background: linear-gradient(to right, var(--accent), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .typewriter { font-size: 1.4rem; color: var(--text-muted); margin: 1rem 0 2rem; min-height: 2rem; }
         .cursor-blink { animation: blink 1s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* Estrutura Principal */
+        /* --- Layout Core --- */
         .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
         .section-title { font-size: 2rem; margin-bottom: 2.5rem; border-left: 5px solid var(--accent); padding-left: 1rem; }
         
-        .card {
-            background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);
-            border-radius: 20px; padding: 2.5rem; margin-bottom: 3rem; transition: background 0.5s, border-color 0.5s;
-        }
+        .card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem; margin-bottom: 3rem; transition: 0.5s; }
         .card h4 { color: var(--text-main); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.1rem; }
         .card p { color: var(--text-muted); margin-bottom: 1rem; }
         .card ul { margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem; }
         .card li { margin-bottom: 0.8rem; color: var(--text-muted); }
 
-        /* Estilo dos Headers dos Cases */
         .case-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1.5rem; }
-        .case-header .logo-container {
-            width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--accent);
-            display: flex; justify-content: center; align-items: center; background: var(--bg-color); overflow: hidden;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
-        }
+        .case-header .logo-container { width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--accent); display: flex; justify-content: center; align-items: center; background: var(--bg-color); overflow: hidden; box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); }
         .case-header img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
         .case-header i { font-size: 2.5rem; color: var(--accent); }
-
         .project-image { width: 100%; max-height: 450px; object-fit: cover; border-radius: 12px; margin-top: 1.5rem; border: 1px solid var(--glass-border); }
 
-        /* Grid de Certificados */
+        /* --- Nova Seção: Linha do Tempo (Resumo Profissional) --- */
+        .timeline-container { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem; margin-bottom: 3rem; }
+        .resume-item { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin-bottom: 2rem; position: relative; }
+        .resume-item:last-child { margin-bottom: 0; }
+        .resume-item::before { content: ''; position: absolute; left: -7px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+        .resume-item h4 { color: var(--text-main); margin-bottom: 0.2rem; font-size: 1.2rem; margin-top: -5px; }
+        .resume-item .company { color: var(--text-muted); font-weight: 600; display: block; margin-bottom: 0.2rem; }
+        .resume-item .date { color: var(--accent-purple); font-size: 0.9rem; font-weight: bold; }
+
+        /* --- Grids --- */
+        .image-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+        .image-gallery img { width: 100%; height: 300px; object-fit: cover; border-radius: 12px; border: 1px solid var(--glass-border); transition: 0.3s; }
+        .image-gallery img:hover { transform: scale(1.02); }
+
         .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .cert-card { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 1.5rem; border-radius: 15px; display: flex; align-items: center; gap: 1rem; transition: background 0.5s, border-color 0.5s; }
+        .cert-card { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 1.5rem; border-radius: 15px; display: flex; align-items: center; gap: 1rem; transition: 0.5s; }
         .cert-card i { font-size: 1.8rem; color: var(--accent); }
         .cert-info h5 { font-size: 1rem; color: var(--text-main); margin-bottom: 0.2rem; }
         .cert-info p { font-size: 0.8rem; color: var(--text-muted); }
@@ -124,7 +108,7 @@
         .hidden { opacity: 0; transform: translateY(20px); transition: 0.8s; }
         .show { opacity: 1; transform: translateY(0); }
 
-        @media (max-width: 768px) { h1 { font-size: 2.5rem; } .nav-links { display: none; } .case-header { flex-direction: column; text-align: center; } }
+        @media (max-width: 768px) { h1 { font-size: 2.5rem; } .nav-links { display: none; } .case-header { flex-direction: column; text-align: center; } .image-gallery { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -137,8 +121,10 @@
         <a href="#" class="nav-logo">FT.</a>
         <ul class="nav-links">
             <li><a href="#experiencia" class="hover-target">Cases</a></li>
+            <li><a href="#resumo-cv" class="hover-target">Trajetória</a></li>
+            <li><a href="#eventos" class="hover-target">Inovação</a></li>
             <li><a href="#certificados" class="hover-target">Certificados</a></li>
-            <li><a href="#habilidades" class="hover-target">Skills</a></li>
+            <li><a href="#educacao" class="hover-target">LAACT</a></li>
             <li>
                 <button id="theme-toggle" class="hover-target" aria-label="Mudar Tema">
                     <i class="fas fa-sun"></i>
@@ -157,32 +143,21 @@
     <main class="container">
         
         <section id="experiencia">
-            <h2 class="section-title hidden">Cases & Experiência Profissional</h2>
+            <h2 class="section-title hidden">Cases de Sucesso</h2>
 
             <div class="card tilt-card hidden hover-target" style="border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
                 <div class="case-header">
                     <div class="logo-container"><img src="logo-comprasia.svg" alt="ComprasIA"></div>
                     <div>
-                        <h3>Case ComprasIA: Monitoramento e Conformidade com IA</h3>
+                        <h3>Case ComprasIA: Monitoramento com IA</h3>
                         <p style="color: var(--accent); font-weight: bold;">Plataforma SaaS | Lei nº 14.133/2021</p>
                     </div>
                 </div>
-                <h4>O Cenário & O Desafio</h4>
-                <p>O desenvolvimento do sistema "ComprasIA" exigia rigor absoluto em compliance com a Nova Lei de Licitações (Lei nº 14.133/2021). O desafio era estruturar fluxos complexos de automação e dar visibilidade em tempo real ao comportamento das Inteligências Artificiais em múltiplos ambientes (DEV, AMOSTRA, HML e PRODUÇÃO), diagnosticando falhas e sucessos operacionais de forma ágil.</p>
-                
-                <h4>A Solução</h4>
-                <p>Implementei um sistema robusto de orquestração de dados e métricas gerenciais. Estruturei painéis de observabilidade para acompanhamento da saúde da IA e apliquei governança técnica na esteira de desenvolvimento de novas features.</p>
-                
-                <h4>Frentes de Atuação:</h4>
+                <p>Estruturação de fluxos complexos de automação e visibilidade em tempo real do comportamento das IAs em múltiplos ambientes (DEV, AMOSTRA, HML e PRODUÇÃO), garantindo conformidade com a Nova Lei de Licitações.</p>
                 <ul>
-                    <li><strong>Inteligência de Dados e Dashboards:</strong> Criação e ajuste de filtros no Grafana para monitorar os logs de interação dos LLMs, categorizando processos analisados e taxas de sucesso/falha institucionais.</li>
-                    <li><strong>Automação de Fluxos (n8n):</strong> Troubleshooting avançado e orquestração de workflows. Atuação cirúrgica na correção de requisições web (nós de HTTP Request), otimizando o tráfego de dados.</li>
-                    <li><strong>Gestão Ágil (Jira):</strong> Estruturação de épicos, títulos e descrições detalhadas no Jira para coordenar a evolução da plataforma e organizar o product backlog.</li>
+                    <li><strong>Dashboards:</strong> Criação de filtros no Grafana para monitorar logs de interação dos LLMs.</li>
+                    <li><strong>Automação (n8n):</strong> Troubleshooting avançado e orquestração de workflows.</li>
                 </ul>
-
-                <h4>O Impacto</h4>
-                <p>Garantia de conformidade jurídica das operações geradas por IA, com total transparência nos painéis de controle. O acompanhamento via Grafana permitiu visualizar centenas de interações simultâneas em Produção e Amostra, facilitando tomadas de decisão rápidas e precisas pela liderança.</p>
-                
                 <img src="grafana.jpg" alt="Dashboard Grafana ComprasIA" class="project-image">
             </div>
 
@@ -194,22 +169,11 @@
                         <p style="color: var(--accent-purple); font-weight: bold;">Brasal Refrigerantes | PMO de Inovação</p>
                     </div>
                 </div>
-                <h4>O Cenário & O Desafio</h4>
-                <p>A Diretoria Financeira exigia alto nível de governança. O desafio era atuar como ponte entre Finanças e TI, conectando a solidez tradicional com a agilidade das novas tecnologias, eliminando gargalos operacionais e criando uma arquitetura orientada a dados.</p>
-                
-                <h4>A Solução</h4>
-                <p>Idealizei e estruturei o departamento de Gestão Estratégica de Inovação Tecnológica (GEIT) para atuar como um hub de transformação digital interno, utilizando Design Thinking e Lean Inception para mapear as raízes dos problemas.</p>
-                
-                <h4>Frentes de Atuação:</h4>
+                <p>Idealizei e estruturei o departamento GEIT para atuar como um hub de transformação digital, conectando Finanças e TI.</p>
                 <ul>
-                    <li><strong>Inteligência Artificial na Logística:</strong> Liderança de um projeto inovador com IA em parceria com a UCB para automação de paleteiras.</li>
-                    <li><strong>Orquestração e Automação:</strong> Desenho de rotinas para substituir processos lentos e integração de plataformas ERP.</li>
-                    <li><strong>Integração Logística:</strong> Implantação de sistema com tecnologia RFID para automação do acesso de veículos.</li>
+                    <li><strong>Inteligência Artificial:</strong> Liderança de projeto inovador com IA em parceria com a UCB.</li>
+                    <li><strong>Integração Logística:</strong> Implantação de sistema RFID para acesso de veículos.</li>
                 </ul>
-
-                <h4>O Impacto</h4>
-                <p>A implementação representou um marco de maturidade operacional, provando que a tecnologia alinhada estrategicamente é o motor principal para a redução de custos e a escalabilidade corporativa.</p>
-                
                 <img src="projeto-brasal.jpg" alt="Projeto Brasal e UCB" class="project-image">
             </div>
 
@@ -217,49 +181,22 @@
                 <div class="case-header">
                     <div class="logo-container"><i class="fas fa-project-diagram"></i></div>
                     <div>
-                        <h3>Case Qualidade: Estruturação Ágil de Backlogs</h3>
-                        <p style="color: var(--text-main); font-weight: bold;">Sinerji Gestão e Sistemas | Gestor de Projetos</p>
+                        <h3>Case Qualidade: Estruturação Ágil</h3>
+                        <p style="color: var(--text-main); font-weight: bold;">Sinerji Gestão e Sistemas</p>
                     </div>
                 </div>
-                <h4>O Cenário & O Desafio</h4>
-                <p>A gestão simultânea de múltiplos projetos de desenvolvimento de software frequentemente gera gargalos no fluxo de aprovação e aumento de inconsistências técnicas. O desafio central era blindar as entregas da equipe de desenvolvimento sem engessar a velocidade das sprints.</p>
-                
-                <h4>A Solução</h4>
-                <p>Implementação de um framework ágil rigoroso associado a um novo Sistema de Gestão da Qualidade (SGQ). Atuei na liderança das cerimônias (Scrum/Kanban) focando não apenas na facilitação, mas na remoção ativa de impedimentos.</p>
-                
-                <h4>Frentes de Atuação:</h4>
-                <ul>
-                    <li><strong>Garantia de Qualidade (QA):</strong> Reestruturação do fluxo de aprovação de tarefas, inserindo baterias de testes funcionais e de regressão como requisitos obrigatórios antes de qualquer "Go-Live".</li>
-                    <li><strong>Sinergia Técnica e Negócio:</strong> Refinamento contínuo do backlog junto aos Product Owners (POs), garantindo documentação clara no Confluence e priorização orientada a valor.</li>
-                </ul>
-
-                <h4>O Impacto</h4>
-                <p>Redução drástica de <strong>70% na taxa de erros e retrabalho</strong> (bugs), otimizando o Lead Time das entregas críticas e aumentando exponencialmente a "velocity" da equipe técnica.</p>
+                <p>Implementação de framework ágil rigoroso associado a um SGQ. Redução drástica de 70% na taxa de erros e retrabalho (bugs) através da reestruturação do fluxo de QA e refinamento de backlogs.</p>
             </div>
 
             <div class="card tilt-card hidden hover-target">
                 <div class="case-header">
                     <div class="logo-container"><i class="fas fa-folder-open"></i></div>
                     <div>
-                        <h3>Case Digitalização: Sistema "Arquivo Morto"</h3>
-                        <p style="color: var(--text-main); font-weight: bold;">Secretaria de Educação | Estágio em Análise e Desenvolvimento</p>
+                        <h3>Case Digitalização: "Arquivo Morto"</h3>
+                        <p style="color: var(--text-main); font-weight: bold;">Secretaria de Educação</p>
                     </div>
                 </div>
-                <h4>O Cenário & O Desafio</h4>
-                <p>O gerenciamento de documentos históricos de ex-alunos era um processo 100% analógico na Secretaria. A necessidade de procurar fichas fisicamente no "arquivo morto" resultava em horas de buscas manuais, o que tornava o atendimento à comunidade extremamente lento e propenso a erros de arquivamento.</p>
-                
-                <h4>A Solução</h4>
-                <p>Projetei e desenvolvi do zero uma solução de software completa (banco de dados e interface) para digitalizar o mapeamento do acervo, vinculando registros físicos a coordenadas digitais exatas dentro da sala de arquivos.</p>
-                
-                <h4>Frentes de Atuação:</h4>
-                <ul>
-                    <li><strong>Desenvolvimento Full-Stack:</strong> Estruturação de banco de dados relacional e criação de uma interface (Front-end) intuitiva, desenhada especificamente para que servidores sem conhecimento tecnológico avançado pudessem operá-la.</li>
-                    <li><strong>Otimização de Fluxo de Suporte:</strong> Introdução de boas práticas de chamados técnicos, organizando as demandas da equipe administrativa.</li>
-                </ul>
-
-                <h4>O Impacto</h4>
-                <p>O tempo médio de busca por documentos caiu de horas para <strong>poucos segundos</strong>. O projeto eliminou gargalos burocráticos, otimizou radicalmente a rotina dos servidores e aumentou a satisfação no atendimento ao público.</p>
-                
+                <p>Desenvolvimento Full-Stack de uma solução para digitalizar o acervo histórico, reduzindo o tempo de busca de documentos físicos de horas para segundos.</p>
                 <img src="sec-educacao.jpg" alt="Projeto Arquivo Morto" class="project-image" onerror="this.style.display='none'">
             </div>
 
@@ -267,43 +204,65 @@
                 <div class="case-header">
                     <div class="logo-container"><i class="fas fa-server"></i></div>
                     <div>
-                        <h3>Case Infraestrutura: Continuidade Operacional</h3>
-                        <p style="color: var(--text-main); font-weight: bold;">Arte Foto Formaturas | Suporte Especializado de TI</p>
+                        <h3>Case Infraestrutura: Continuidade</h3>
+                        <p style="color: var(--text-main); font-weight: bold;">Arte Foto Formaturas</p>
                     </div>
                 </div>
-                <h4>O Cenário & A Solução</h4>
-                <p>Para uma empresa de alto volume operacional, o tempo de inatividade sistêmica (downtime) representa prejuízo financeiro imediato. Atuei como ponto focal para manter todo o parque tecnológico estável e os colaboradores produtivos.</p>
-                
-                <h4>Frentes de Atuação:</h4>
-                <ul>
-                    <li><strong>Suporte N1 e N2:</strong> Diagnóstico e resolução ágil de incidentes críticos envolvendo hardware, software e redes corporativas.</li>
-                    <li><strong>Prevenção:</strong> Execução de planos de manutenção preventiva, prolongando a vida útil dos equipamentos de TI e assegurando a continuidade dos negócios.</li>
-                </ul>
+                <p>Suporte N1 e N2 focado na redução do tempo de inatividade (downtime), executando manutenção preventiva e resolvendo incidentes críticos em redes corporativas.</p>
             </div>
+        </section>
 
+        <section id="resumo-cv" style="margin-top: 5rem;">
+            <h2 class="section-title hidden">Resumo de Trajetória Profissional</h2>
+            
+            <div class="timeline-container hidden">
+                <div class="resume-item">
+                    <h4>Assistente de Gestão de Projetos / Scrum Master</h4>
+                    <span class="company">Sinerji Gestão e Sistemas</span>
+                    <span class="date">Maio 2024 - Presente</span>
+                </div>
+                
+                <div class="resume-item">
+                    <h4>PMO de Inovação & Transformação Digital</h4>
+                    <span class="company">Brasal Refrigerantes</span>
+                    <span class="date">Out 2023 - Out 2024</span>
+                </div>
+
+                <div class="resume-item">
+                    <h4>Técnico em Informática / Suporte Especializado</h4>
+                    <span class="company">Arte Foto Formaturas</span>
+                    <span class="date">Jan 2022 - Out 2023</span>
+                </div>
+
+                <div class="resume-item">
+                    <h4>Estagiário em Análise e Desenvolvimento</h4>
+                    <span class="company">Secretaria de Educação</span>
+                    <span class="date">Nov 2020 - Nov 2021</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="eventos" style="margin-top: 5rem;">
+            <h2 class="section-title hidden">Imersão Tecnológica e Inovação</h2>
+            <div class="card hidden hover-target">
+                <h3>Campus Party & Atualização Contínua</h3>
+                <p>Acredito que a verdadeira inovação não acontece apenas dentro do escritório. Por isso, participo ativamente e acompanho os maiores eventos de tecnologia do país, como a <strong>Campus Party</strong>. Essa imersão contínua me permite estar sempre à frente das novas tendências em Inteligência Artificial, metodologias ágeis e automação de processos.</p>
+                <div class="image-gallery">
+                    <img src="campusparty1.jpg" alt="Felipe na Campus Party" class="hover-target">
+                    <img src="campusparty2.jpg" alt="Palco Principal Campus Party" class="hover-target">
+                </div>
+            </div>
         </section>
 
         <section id="certificados" style="margin-top: 5rem;">
             <h2 class="section-title hidden">Certificações em Destaque</h2>
             <div class="cert-grid hidden">
-                <div class="cert-card tilt-card hover-target">
-                    <i class="fas fa-award"></i><div class="cert-info"><h5>Scrum Master</h5><p>LinkedIn Learning</p></div>
-                </div>
-                <div class="cert-card tilt-card hover-target">
-                    <i class="fas fa-robot"></i><div class="cert-info"><h5>IA para Projetos</h5><p>PMI</p></div>
-                </div>
-                <div class="cert-card tilt-card hover-target">
-                    <i class="fas fa-database"></i><div class="cert-info"><h5>Modelagem de Dados</h5><p>LinkedIn Learning</p></div>
-                </div>
-                <div class="cert-card tilt-card hover-target">
-                    <i class="fas fa-chart-line"></i><div class="cert-info"><h5>Análise de Dados</h5><p>Fundação Bradesco</p></div>
-                </div>
-                <div class="cert-card tilt-card hover-target">
-                    <i class="fas fa-bolt"></i><div class="cert-info"><h5>Técnicas Scrum</h5><p>PMI</p></div>
-                </div>
-                <div class="cert-card tilt-card hover-target">
-                    <i class="fab fa-python"></i><div class="cert-info"><h5>Python Básico</h5><p>LinkedIn Learning</p></div>
-                </div>
+                <div class="cert-card tilt-card hover-target"><i class="fas fa-award"></i><div class="cert-info"><h5>Scrum Master</h5><p>LinkedIn Learning</p></div></div>
+                <div class="cert-card tilt-card hover-target"><i class="fas fa-robot"></i><div class="cert-info"><h5>IA para Projetos</h5><p>PMI</p></div></div>
+                <div class="cert-card tilt-card hover-target"><i class="fas fa-database"></i><div class="cert-info"><h5>Modelagem de Dados</h5><p>LinkedIn Learning</p></div></div>
+                <div class="cert-card tilt-card hover-target"><i class="fas fa-chart-line"></i><div class="cert-info"><h5>Análise de Dados</h5><p>Fundação Bradesco</p></div></div>
+                <div class="cert-card tilt-card hover-target"><i class="fas fa-bolt"></i><div class="cert-info"><h5>Técnicas Scrum</h5><p>PMI</p></div></div>
+                <div class="cert-card tilt-card hover-target"><i class="fab fa-python"></i><div class="cert-info"><h5>Python Básico</h5><p>LinkedIn Learning</p></div></div>
             </div>
         </section>
 
@@ -316,6 +275,32 @@
                 <span class="skill-tag hover-target">Python & SQL</span>
                 <span class="skill-tag hover-target">RPA & IA</span>
                 <span class="skill-tag hover-target">Análise de Dados</span>
+            </div>
+        </section>
+
+        <section id="educacao" style="margin-top: 5rem;">
+            <h2 class="section-title hidden">Vivência Acadêmica e Formação</h2>
+            
+            <div class="card hidden hover-target">
+                <div class="case-header">
+                    <div class="logo-container"><i class="fas fa-university"></i></div>
+                    <div>
+                        <h3>Diretor de Projetos e Inovação (LAACT)</h3>
+                        <p style="color: var(--accent-purple); font-weight: bold;">Liga Acadêmica de Artes, Ciências e Tecnologia - UDF</p>
+                    </div>
+                </div>
+                <p>Durante minha jornada no UDF, lidero iniciativas que promovem a integração entre tecnologia e inovação. Busco constantemente soluções práticas para desafios reais, moldando competências técnicas e interpessoais da equipe.</p>
+                <img src="laact.jpg" alt="Equipe LAACT na Pixel Show" class="project-image hover-target">
+            </div>
+
+            <div class="card hidden hover-target" style="margin-bottom: 1.5rem;">
+                <h4>Ciência da Computação (Bacharelado)</h4>
+                <p style="color: var(--accent-purple); font-weight: 600; margin-bottom: 0;">UDF Centro Universitário | Jan 2022 - Dez 2026</p>
+            </div>
+
+            <div class="card hidden hover-target">
+                <h4>Análise e Desenvolvimento de Sistemas (Tecnólogo)</h4>
+                <p style="color: var(--accent-purple); font-weight: 600; margin-bottom: 0;">Unicesumar | Jan 2021 - Nov 2022</p>
             </div>
         </section>
 
@@ -336,28 +321,16 @@
             }
         });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('show'); });
-        }, { threshold: 0.1 });
+        const observer = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('show'); }); }, { threshold: 0.1 });
         document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 
         const cursor = document.getElementById('custom-cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
-        });
-        document.querySelectorAll('.hover-target, a, button').forEach(t => {
-            t.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-            t.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
-        });
+        document.addEventListener('mousemove', (e) => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+        document.querySelectorAll('.hover-target, a, button').forEach(t => { t.addEventListener('mouseenter', () => cursor.classList.add('hovering')); t.addEventListener('mouseleave', () => cursor.classList.remove('hovering')); });
 
         const textToType = "Gestão de Projetos | Data & IA | Inovação";
         let typeIndex = 0;
-        function typeWriter() {
-            if (typeIndex < textToType.length) {
-                document.getElementById('typewriter-text').innerHTML += textToType.charAt(typeIndex);
-                typeIndex++; setTimeout(typeWriter, 50);
-            }
-        }
+        function typeWriter() { if (typeIndex < textToType.length) { document.getElementById('typewriter-text').innerHTML += textToType.charAt(typeIndex); typeIndex++; setTimeout(typeWriter, 50); } }
         setTimeout(typeWriter, 500);
     </script>
 </body>
