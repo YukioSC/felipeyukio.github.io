@@ -16,11 +16,18 @@
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
+        /* Rolagem suave e ajuste para o menu fixo não cobrir os títulos */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
+            cursor: none; /* Oculta o cursor padrão para usarmos o customizado */
         }
 
         body {
@@ -30,23 +37,107 @@
             overflow-x: hidden;
         }
 
+        /* --- Cursor Customizado --- */
+        .custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            z-index: 9999;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+        }
+
+        .custom-cursor.hovering {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(56, 189, 248, 0.1);
+        }
+
+        /* --- Elementos Flutuantes no Fundo --- */
         .bg-glow {
             position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            top: -50%; left: -50%; width: 200%; height: 200%;
             background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.1), transparent 60%),
                         radial-gradient(circle at 80% 20%, rgba(129, 140, 248, 0.15), transparent 50%);
-            z-index: -1;
+            z-index: -2;
             animation: pulse 15s infinite alternate;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+        .floating-icon {
+            position: fixed;
+            color: rgba(255, 255, 255, 0.03);
+            font-size: 5rem;
+            font-weight: bold;
+            z-index: -1;
+            user-select: none;
+            animation: float 20s infinite linear;
         }
 
+        .icon-1 { top: 10%; left: 10%; animation-duration: 25s; }
+        .icon-2 { top: 70%; left: 80%; animation-duration: 30s; animation-direction: reverse; }
+        .icon-3 { top: 40%; left: 85%; animation-duration: 22s; }
+        .icon-4 { top: 80%; left: 15%; animation-duration: 28s; animation-direction: reverse; }
+
+        @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-50px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        /* --- Menu Superior --- */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 1rem 2rem;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; /* Esconde menu em telas muito pequenas */ }
+            header { padding-top: 6rem; }
+        }
+
+        /* --- Header / Banner Inicial --- */
         header {
             min-height: 100vh;
             display: flex;
@@ -55,11 +146,11 @@
             align-items: center;
             text-align: center;
             padding: 2rem;
+            padding-top: 5rem;
         }
 
         .profile-pic {
-            width: 180px;
-            height: 180px;
+            width: 180px; height: 180px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--accent);
@@ -68,135 +159,88 @@
         }
 
         h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
+            font-size: 3.5rem; font-weight: 800;
             background: linear-gradient(to right, var(--accent), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            color: var(--text-muted);
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid var(--accent);
-            display: inline-block;
-            padding-bottom: 0.5rem;
-        }
-
-        .card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border-color: rgba(56, 189, 248, 0.3);
-        }
-
-        .card h3 {
-            color: var(--accent);
-            font-size: 1.5rem;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
         }
 
-        .card .date {
-            font-size: 0.9rem;
-            color: var(--accent-purple);
-            margin-bottom: 1rem;
-            display: block;
-            font-weight: 600;
-        }
-
-        .card ul {
-            margin-left: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .card li {
-            margin-bottom: 0.8rem;
+        /* Cursor da máquina de escrever */
+        .typewriter {
+            font-size: 1.5rem;
             color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            min-height: 2rem;
+        }
+        .cursor-blink { animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .contact-info {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;
+            margin-bottom: 2rem; color: var(--text-muted);
         }
 
-        .project-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-top: 1.5rem;
-            border: 1px solid var(--glass-border);
+        /* --- Restante do Layout (Cards, etc) --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+        .section-title { font-size: 2rem; margin-bottom: 2rem; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 0.5rem; }
+        
+        .card {
+            background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border); border-radius: 16px; padding: 2.5rem; margin-bottom: 2.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: rgba(56, 189, 248, 0.3); }
+        .card h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .card h4 { color: var(--text-main); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .card .date { font-size: 0.9rem; color: var(--accent-purple); margin-bottom: 1rem; display: block; font-weight: 600; }
+        .card ul { margin-left: 1.5rem; margin-top: 1rem; }
+        .card li { margin-bottom: 0.8rem; color: var(--text-muted); }
+        .card p { color: var(--text-muted); margin-bottom: 1rem; }
+        
+        .project-image { width: 100%; max-height: 400px; object-fit: cover; border-radius: 12px; margin-top: 1.5rem; border: 1px solid var(--glass-border); }
 
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
+        .case-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1.5rem; }
+        .case-header img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); }
 
-        .skill-tag {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--accent);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
+        .image-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+        .image-gallery img { width: 100%; height: 300px; object-fit: cover; border-radius: 12px; border: 1px solid var(--glass-border); transition: transform 0.3s ease; }
+        .image-gallery img:hover { transform: scale(1.02); }
 
-        .skill-tag:hover {
-            background: var(--accent);
-            color: var(--bg-color);
-        }
+        .skills-container { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .skill-tag { background: rgba(56, 189, 248, 0.1); color: var(--accent); padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 0.9rem; transition: all 0.3s ease; }
+        .skill-tag:hover { background: var(--accent); color: var(--bg-color); }
 
-        .hidden {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .show { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
+    <div class="custom-cursor" id="custom-cursor"></div>
+
     <div class="bg-glow"></div>
+    <div class="floating-icon icon-1">{ }</div>
+    <div class="floating-icon icon-2">&lt;/&gt;</div>
+    <div class="floating-icon icon-3">⚙️</div>
+    <div class="floating-icon icon-4">#</div>
+
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo">FT.</a>
+        <ul class="nav-links">
+            <li><a href="#experiencia" class="hover-target">Experiência</a></li>
+            <li><a href="#eventos" class="hover-target">Inovação</a></li>
+            <li><a href="#habilidades" class="hover-target">Skills</a></li>
+            <li><a href="#educacao" class="hover-target">Formação</a></li>
+        </ul>
+    </nav>
 
     <header class="hidden">
         <img src="perfil.jpg" alt="Felipe Takamoto" class="profile-pic">
         
         <h1>Felipe Yukio da Silva Takamoto</h1>
-        <div class="subtitle">Gestão de Projetos | PMO | Inovação</div>
+        
+        <div class="typewriter"><span id="typewriter-text"></span><span class="cursor-blink">|</span></div>
+        
         <div class="contact-info">
             <span>📍 Brasília, DF</span>
             <span>✉️ felipeyukiodasilvatakamoto@gmail.com</span>
@@ -212,79 +256,103 @@
         <section id="experiencia">
             <h2 class="section-title hidden">Experiência Profissional e Impacto</h2>
 
-            <div class="card hidden">
+            <div class="card hidden hover-target" style="border-color: rgba(129, 140, 248, 0.4); box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                <div class="case-header">
+                    <img src="geit.jpg" alt="Logo GEIT">
+                    <div>
+                        <h3>Case de Projeto: Estruturação do GEIT</h3>
+                        <span class="date">Diretoria Financeira - Brasal</span>
+                    </div>
+                </div>
+                <h4>O Cenário & O Desafio</h4>
+                <p>A Diretoria Financeira da Brasal, coração das operações corporativas, exigia alto nível de governança e precisão. O desafio era atuar como ponte entre Finanças e TI para conectar a solidez tradicional com a agilidade das novas tecnologias, eliminando gargalos e criando uma arquitetura orientada a dados.</p>
+                <h4>A Solução: O Nascimento do GEIT</h4>
+                <p>Idealizei e estruturei o departamento de Gestão Estratégica de Inovação Tecnológica (GEIT) para atuar como um hub de transformação digital interno. Apliquei Design Thinking e Lean Inception para mapear as raízes dos problemas e repensar a forma de trabalho da diretoria.</p>
+                <h4>Frentes de Atuação:</h4>
+                <ul>
+                    <li><strong>Orquestração e Automação de Fluxos:</strong> Desenho de rotinas para substituir processos lentos, liberando o time para análises de alto nível.</li>
+                    <li><strong>Integração de ERPs:</strong> Conexão nativa entre plataformas financeiras, modernizando a arquitetura de software.</li>
+                    <li><strong>Inteligência de Dados (Dashboards):</strong> Criação de painéis de monitoramento em tempo real para previsibilidade da liderança.</li>
+                    <li><strong>Gestão Ágil de Demandas:</strong> Organização do backlog, traduzindo requisitos de negócio em tarefas técnicas mensuráveis.</li>
+                </ul>
+                <h4>O Impacto</h4>
+                <p>A implementação representou um marco de maturidade operacional, provando que a tecnologia alinhada estrategicamente é o principal motor de eficiência e escalabilidade corporativa.</p>
+            </div>
+
+            <div class="card hidden hover-target">
                 <h3>Assistente de Gestão de Projetos</h3>
                 <span class="date">Sinerji Gestão e Sistemas | Maio 2024 - Presente</span>
-                <p style="color: var(--text-muted);">Atuo no planejamento de múltiplos projetos simultâneos, garantindo a estabilidade das aplicações através da execução de testes funcionais e de regressão.</p>
+                <p>Atuo no planejamento de múltiplos projetos simultâneos, garantindo a estabilidade das aplicações através da execução de testes funcionais e de regressão.</p>
                 <ul>
                     <li><strong>Qualidade e Eficiência:</strong> Desenvolvi e implementei um Sistema de Gestão da Qualidade (SGQ) para o fluxo de aprovação de tarefas, resultando na <strong>redução de 70% dos erros</strong> em entregas.</li>
                     <li><strong>Agilidade:</strong> Aplicação contínua de frameworks como Scrum e Kanban para orquestrar as demandas da equipe.</li>
                 </ul>
             </div>
 
-            <div class="card hidden">
+            <div class="card hidden hover-target">
                 <h3>PMO de Projetos de Inovação</h3>
                 <span class="date">Brasal Refrigerantes | Out 2023 - Out 2024</span>
-                <p style="color: var(--text-muted);">Foco em apoiar a Diretoria Financeira na automação e inovação de processos, atuando como elo entre o negócio e a tecnologia.</p>
+                <p>Foco em apoiar a Diretoria Financeira na automação e inovação de processos, atuando como elo entre o negócio e a tecnologia.</p>
                 <ul>
-                    <li><strong>Inteligência Artificial na Logística:</strong> Liderei um projeto desafiador em parceria com a Universidade Católica de Brasília (UCB) para desenvolver um sistema inovador utilizando IA para automatizar o movimento de paleteiras, eliminando a intervenção humana direta.</li>
-                    <li><strong>Aumento da Eficiência Logística:</strong> Implantei um sistema RFID para a automação da entrada de caminhões, integrando o controle de acesso ao sistema corporativo.</li>
-                    <li><strong>Redução de Falhas:</strong> Criei soluções de telemetria e monitoramento para equipamentos, diminuindo falhas manuais e gerando dados precisos para análise.</li>
+                    <li><strong>Inteligência Artificial na Logística:</strong> Liderei um projeto em parceria com a Universidade Católica de Brasília (UCB) para desenvolver um sistema com IA para automatizar o movimento de paleteiras.</li>
+                    <li><strong>Aumento da Eficiência Logística:</strong> Implantei um sistema RFID para a automação da entrada de caminhões.</li>
+                    <li><strong>Redução de Falhas:</strong> Criei soluções de telemetria e monitoramento para equipamentos, diminuindo falhas manuais.</li>
                 </ul>
-                <img src="projeto-brasal.jpg" alt="Equipe do Projeto Logístico Brasal e UCB" class="project-image">
+                <img src="projeto-brasal.jpg" alt="Equipe do Projeto Logístico Brasal e UCB" class="project-image hover-target">
             </div>
 
-            <div class="card hidden">
-                <h3>Técnico em Informática / Suporte Especializado</h3>
-                <span class="date">Arte Foto Formaturas | Jan 2022 - Out 2023</span>
-                <p style="color: var(--text-muted);">Responsável pelo suporte técnico de primeiro e segundo nível, garantindo a continuidade operacional e a manutenção preventiva e corretiva de sistemas internos.</p>
-            </div>
+        </section>
+
+        <section id="eventos" style="margin-top: 4rem;">
+            <h2 class="section-title hidden">Imersão Tecnológica e Inovação</h2>
             
-            <div class="card hidden">
-                <h3>Estagiário em Análise e Desenvolvimento</h3>
-                <span class="date">Secretaria de Educação de Valparaíso | Nov 2020 - Nov 2021</span>
-                <p style="color: var(--text-muted);">Desenvolvi um sistema de consulta para o "Arquivo Morto", criando uma interface de pesquisa que digitalizou a localização de documentos físicos, reduzindo drasticamente o tempo de busca manual.</p>
+            <div class="card hidden hover-target">
+                <h3>Campus Party & Atualização Contínua</h3>
+                <p>Acredito que a verdadeira inovação não acontece apenas dentro do escritório. Por isso, participo ativamente e acompanho os maiores eventos de tecnologia do país, como a <strong>Campus Party</strong>. Essa imersão contínua me permite estar sempre à frente das novas tendências em Inteligência Artificial, metodologias ágeis, Web3 e automação de processos.</p>
+                <p>Meu objetivo é garantir que a ponte entre o desenvolvimento técnico e a estratégia de negócio seja sempre construída com as ferramentas mais modernas e eficientes disponíveis no mercado global.</p>
+                
+                <div class="image-gallery">
+                    <img src="campusparty1.jpg" alt="Felipe na Campus Party" class="hover-target">
+                    <img src="campusparty2.jpg" alt="Palco Principal Campus Party" class="hover-target">
+                </div>
             </div>
         </section>
 
         <section id="habilidades" style="margin-top: 4rem;">
             <h2 class="section-title hidden">Competências Técnicas</h2>
             <div class="skills-container hidden">
-                <div class="skill-tag">Scrum & Kanban</div>
-                <div class="skill-tag">Gestão de PMO</div>
-                <div class="skill-tag">Jira & Confluence</div>
-                <div class="skill-tag">Inovação e IA</div>
-                <div class="skill-tag">Python & SQL</div>
-                <div class="skill-tag">Análise de Dados</div>
-                <div class="skill-tag">Automação (RPA)</div>
-                <div class="skill-tag">AWS</div>
-                <div class="skill-tag">Git / Github</div>
+                <div class="skill-tag hover-target">Scrum & Kanban</div>
+                <div class="skill-tag hover-target">Gestão de PMO</div>
+                <div class="skill-tag hover-target">Jira & Confluence</div>
+                <div class="skill-tag hover-target">Inovação e IA</div>
+                <div class="skill-tag hover-target">Python & SQL</div>
+                <div class="skill-tag hover-target">Análise de Dados</div>
+                <div class="skill-tag hover-target">Automação (RPA)</div>
+                <div class="skill-tag hover-target">Design Thinking</div>
+                <div class="skill-tag hover-target">Git / Github</div>
             </div>
         </section>
 
         <section id="educacao" style="margin-top: 4rem;">
             <h2 class="section-title hidden">Vivência Acadêmica e Formação</h2>
             
-            <div class="card hidden">
+            <div class="card hidden hover-target">
                 <h3>Diretor de Projetos e Inovação (LAACT)</h3>
                 <span class="date">Liga Acadêmica de Artes, Ciências e Tecnologia - UDF</span>
-                <p style="color: var(--text-muted);">Durante minha jornada no UDF, lidero iniciativas que promovem a integração entre tecnologia e inovação. Busco constantemente soluções práticas para desafios reais, moldando competências técnicas e interpessoais da equipe.</p>
-                <img src="laact.jpg" alt="Equipe LAACT na Pixel Show" class="project-image">
+                <p>Durante minha jornada no UDF, lidero iniciativas que promovem a integração entre tecnologia e inovação. Busco constantemente soluções práticas para desafios reais, moldando competências técnicas e interpessoais da equipe.</p>
+                <img src="laact.jpg" alt="Equipe LAACT na Pixel Show" class="project-image hover-target">
             </div>
 
-            <div class="card hidden">
+            <div class="card hidden hover-target">
                 <h3>Ciência da Computação (Bacharelado)</h3>
                 <span class="date">UDF Centro Universitário | Jan 2022 - Dez 2026</span>
-            </div>
-            <div class="card hidden">
-                <h3>Análise e Desenvolvimento de Sistemas (Tecnólogo)</h3>
-                <span class="date">Unicesumar | Jan 2021 - Nov 2022</span>
             </div>
         </section>
 
     </main>
 
     <script>
+        // 1. Animação de Scroll (Fade in dos cards)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -293,8 +361,51 @@
             });
         }, { threshold: 0.1 });
 
-        const hiddenElements = document.querySelectorAll('.hidden');
-        hiddenElements.forEach((el) => observer.observe(el));
+        document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+
+        // 2. Cursor Customizado
+        const cursor = document.getElementById('custom-cursor');
+        const hoverTargets = document.querySelectorAll('.hover-target, a, button');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        hoverTargets.forEach(target => {
+            target.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+            target.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+        });
+
+        // 3. Efeito Máquina de Escrever
+        const textToType = "Gestão de Projetos | PMO | Inovação Tecnológica";
+        const typewriterElement = document.getElementById('typewriter-text');
+        let typeIndex = 0;
+
+        function typeWriter() {
+            if (typeIndex < textToType.length) {
+                typewriterElement.innerHTML += textToType.charAt(typeIndex);
+                typeIndex++;
+                setTimeout(typeWriter, 50); // Velocidade da digitação
+            }
+        }
+        
+        // Iniciar digitação após 500ms
+        setTimeout(typeWriter, 500);
+
+        // 4. Esconder Navbar ao rolar para baixo, mostrar ao rolar para cima
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                navbar.style.transform = 'translateY(-100%)'; // Rola para baixo - esconde
+            } else {
+                navbar.style.transform = 'translateY(0)'; // Rola para cima - mostra
+            }
+            lastScrollTop = scrollTop;
+        });
     </script>
 </body>
 </html>
