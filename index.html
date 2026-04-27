@@ -30,7 +30,6 @@
             overflow-x: hidden;
         }
 
-        /* Background animated gradient */
         .bg-glow {
             position: fixed;
             top: -50%;
@@ -58,8 +57,18 @@
             padding: 2rem;
         }
 
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+            margin-bottom: 2rem;
+        }
+
         h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 800;
             background: linear-gradient(to right, var(--accent), var(--accent-purple));
             -webkit-background-clip: text;
@@ -70,13 +79,15 @@
         .subtitle {
             font-size: 1.5rem;
             color: var(--text-muted);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .contact-info {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             color: var(--text-muted);
         }
 
@@ -94,15 +105,14 @@
             padding-bottom: 0.5rem;
         }
 
-        /* Glassmorphism Cards */
         .card {
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -123,6 +133,26 @@
             color: var(--accent-purple);
             margin-bottom: 1rem;
             display: block;
+            font-weight: 600;
+        }
+
+        .card ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .card li {
+            margin-bottom: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .project-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            border: 1px solid var(--glass-border);
         }
 
         .skills-container {
@@ -146,7 +176,6 @@
             color: var(--bg-color);
         }
 
-        /* Scroll Animation Classes */
         .hidden {
             opacity: 0;
             transform: translateY(30px);
@@ -164,73 +193,92 @@
     <div class="bg-glow"></div>
 
     <header class="hidden">
-        <h1>Felipe Yukio da Silva Takamoto [cite: 1]</h1>
-        <div class="subtitle">Gestor de Projetos - Scrum Master </div>
+        <img src="perfil.jpg" alt="Felipe Takamoto" class="profile-pic">
+        
+        <h1>Felipe Yukio da Silva Takamoto</h1>
+        <div class="subtitle">Gestão de Projetos | PMO | Inovação</div>
         <div class="contact-info">
-            <span>Brasília, DF [cite: 3]</span>
-            <span>felipeyukiodasilvatakamoto@gmail.com [cite: 4]</span>
-            <span>(61) 99352-0711 [cite: 4]</span>
+            <span>📍 Brasília, DF</span>
+            <span>✉️ felipeyukiodasilvatakamoto@gmail.com</span>
+            <span>📱 (61) 99352-0711</span>
         </div>
-        <p style="max-width: 600px; color: var(--text-muted); font-size: 1.1rem;">
-            Profissional de Tecnologia com atuação estratégica na intersecção entre desenvolvimento de sistemas e gestão ágil. [cite: 8] Focado na melhoria contínua de processos e na entrega de valor mensurável. [cite: 12, 13]
+        <p style="max-width: 800px; color: var(--text-muted); font-size: 1.1rem; text-align: justify;">
+            Profissional de Tecnologia com foco em otimizar processos e entregar resultados, com trajetória que abrange desde o desenvolvimento de sistemas até a gestão de projetos de inovação. Especialista em utilizar frameworks ágeis (Scrum/Kanban) e ferramentas como Jira e Confluence para transformar demandas complexas em entregas estruturadas, gerando ganhos reais de produtividade e eficiência.
         </p>
     </header>
 
     <main class="container">
         
         <section id="experiencia">
-            <h2 class="section-title hidden">Experiência Profissional [cite: 14]</h2>
+            <h2 class="section-title hidden">Experiência Profissional e Impacto</h2>
 
             <div class="card hidden">
-                <h3>Gestor de Projetos [cite: 15]</h3>
-                <span class="date">Sinerji Gestão e Sistemas | Maio 2025 - Presente [cite: 15, 16]</span>
-                <p>Lidero cerimônias ágeis estratégicas e gerencio o backlog em parceria com POs. [cite: 17, 18] <strong>Reduzi em 70% a taxa de retrabalho e bugs</strong> ao reestruturar o fluxo de qualidade e aprovação de tarefas. [cite: 19] Monitoro a performance da equipe via Jira e garanto que a documentação no Confluence acelere o desenvolvimento. [cite: 20, 21]</p>
+                <h3>Assistente de Gestão de Projetos</h3>
+                <span class="date">Sinerji Gestão e Sistemas | Maio 2024 - Presente</span>
+                <p style="color: var(--text-muted);">Atuo no planejamento de múltiplos projetos simultâneos, garantindo a estabilidade das aplicações através da execução de testes funcionais e de regressão.</p>
+                <ul>
+                    <li><strong>Qualidade e Eficiência:</strong> Desenvolvi e implementei um Sistema de Gestão da Qualidade (SGQ) para o fluxo de aprovação de tarefas, resultando na <strong>redução de 70% dos erros</strong> em entregas.</li>
+                    <li><strong>Agilidade:</strong> Aplicação contínua de frameworks como Scrum e Kanban para orquestrar as demandas da equipe.</li>
+                </ul>
             </div>
 
             <div class="card hidden">
-                <h3>PMO de Inovação & Transformação Digital [cite: 22]</h3>
-                <span class="date">Brasal Refrigerantes | Out 2023 - Out 2024 [cite: 22, 28]</span>
-                <p>Liderei a transformação digital na Diretoria Financeira focando em soluções de automação. [cite: 23] Gerenciei um <strong>projeto pioneiro de Inteligência Artificial</strong> para automação de paleteiras (logística 4.0). [cite: 24] Orquestrei o ciclo de vida dos projetos utilizando Jira, Kanban e Confluence. [cite: 26]</p>
+                <h3>PMO de Projetos de Inovação</h3>
+                <span class="date">Brasal Refrigerantes | Out 2023 - Out 2024</span>
+                <p style="color: var(--text-muted);">Foco em apoiar a Diretoria Financeira na automação e inovação de processos, atuando como elo entre o negócio e a tecnologia.</p>
+                <ul>
+                    <li><strong>Inteligência Artificial na Logística:</strong> Liderei um projeto desafiador em parceria com a Universidade Católica de Brasília (UCB) para desenvolver um sistema inovador utilizando IA para automatizar o movimento de paleteiras, eliminando a intervenção humana direta.</li>
+                    <li><strong>Aumento da Eficiência Logística:</strong> Implantei um sistema RFID para a automação da entrada de caminhões, integrando o controle de acesso ao sistema corporativo.</li>
+                    <li><strong>Redução de Falhas:</strong> Criei soluções de telemetria e monitoramento para equipamentos, diminuindo falhas manuais e gerando dados precisos para análise.</li>
+                </ul>
+                <img src="projeto-brasal.jpg" alt="Equipe do Projeto Logístico Brasal e UCB" class="project-image">
             </div>
 
             <div class="card hidden">
-                <h3>Técnico em Informática / Suporte Especializado [cite: 30]</h3>
-                <span class="date">Arte Foto Formaturas | Jan 2022 - Out 2023 [cite: 29, 30]</span>
-                <p>Garanti a continuidade operacional com suporte ágil Nível 1 e 2. [cite: 32] Executei planos de manutenção preventiva e atuei como ponto focal para resolução de incidentes. [cite: 33, 34]</p>
+                <h3>Técnico em Informática / Suporte Especializado</h3>
+                <span class="date">Arte Foto Formaturas | Jan 2022 - Out 2023</span>
+                <p style="color: var(--text-muted);">Responsável pelo suporte técnico de primeiro e segundo nível, garantindo a continuidade operacional e a manutenção preventiva e corretiva de sistemas internos.</p>
             </div>
             
             <div class="card hidden">
-                <h3>Estagiário em Análise e Desenvolvimento [cite: 35]</h3>
-                <span class="date">Secretaria de Educação | Nov 2020 - Nov 2021 [cite: 35, 36]</span>
-                <p>Desenvolvi e implantei software para gestão do "Arquivo Morto", modernizando processos analógicos. [cite: 37, 38] Otimizei o fluxo de atendimento técnico reduzindo o tempo de resposta. [cite: 39]</p>
+                <h3>Estagiário em Análise e Desenvolvimento</h3>
+                <span class="date">Secretaria de Educação de Valparaíso | Nov 2020 - Nov 2021</span>
+                <p style="color: var(--text-muted);">Desenvolvi um sistema de consulta para o "Arquivo Morto", criando uma interface de pesquisa que digitalizou a localização de documentos físicos, reduzindo drasticamente o tempo de busca manual.</p>
             </div>
         </section>
 
         <section id="habilidades" style="margin-top: 4rem;">
-            <h2 class="section-title hidden">Competências Técnicas [cite: 48]</h2>
+            <h2 class="section-title hidden">Competências Técnicas</h2>
             <div class="skills-container hidden">
-                <div class="skill-tag">Scrum [cite: 46]</div>
-                <div class="skill-tag">Metodologias Ágeis [cite: 46]</div>
-                <div class="skill-tag">Jira / Confluence [cite: 46]</div>
-                <div class="skill-tag">Python [cite: 46]</div>
-                <div class="skill-tag">JavaScript [cite: 46]</div>
-                <div class="skill-tag">AWS [cite: 46]</div>
-                <div class="skill-tag">Análise de Dados [cite: 46]</div>
-                <div class="skill-tag">RPA [cite: 46]</div>
-                <div class="skill-tag">SQL [cite: 46]</div>
-                <div class="skill-tag">Git / Github [cite: 46]</div>
+                <div class="skill-tag">Scrum & Kanban</div>
+                <div class="skill-tag">Gestão de PMO</div>
+                <div class="skill-tag">Jira & Confluence</div>
+                <div class="skill-tag">Inovação e IA</div>
+                <div class="skill-tag">Python & SQL</div>
+                <div class="skill-tag">Análise de Dados</div>
+                <div class="skill-tag">Automação (RPA)</div>
+                <div class="skill-tag">AWS</div>
+                <div class="skill-tag">Git / Github</div>
             </div>
         </section>
 
         <section id="educacao" style="margin-top: 4rem;">
-            <h2 class="section-title hidden">Formação [cite: 40]</h2>
+            <h2 class="section-title hidden">Vivência Acadêmica e Formação</h2>
+            
             <div class="card hidden">
-                <h3>Ciência da Computação (Bacharelado) [cite: 42]</h3>
-                <span class="date">UDF Centro Universitário | Jan 2022 - Dez 2026 [cite: 41, 52]</span>
+                <h3>Diretor de Projetos e Inovação (LAACT)</h3>
+                <span class="date">Liga Acadêmica de Artes, Ciências e Tecnologia - UDF</span>
+                <p style="color: var(--text-muted);">Durante minha jornada no UDF, lidero iniciativas que promovem a integração entre tecnologia e inovação. Busco constantemente soluções práticas para desafios reais, moldando competências técnicas e interpessoais da equipe.</p>
+                <img src="laact.jpg" alt="Equipe LAACT na Pixel Show" class="project-image">
+            </div>
+
+            <div class="card hidden">
+                <h3>Ciência da Computação (Bacharelado)</h3>
+                <span class="date">UDF Centro Universitário | Jan 2022 - Dez 2026</span>
             </div>
             <div class="card hidden">
-                <h3>Análise e Desenvolvimento de Sistemas (Tecnólogo) [cite: 44]</h3>
-                <span class="date">Unicesumar | Jan 2021 - Nov 2022 [cite: 43, 53]</span>
+                <h3>Análise e Desenvolvimento de Sistemas (Tecnólogo)</h3>
+                <span class="date">Unicesumar | Jan 2021 - Nov 2022</span>
             </div>
         </section>
 
