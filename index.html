@@ -73,17 +73,17 @@
         
         .card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem; margin-bottom: 3rem; transition: 0.5s; }
         .card h4 { color: var(--text-main); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.1rem; }
-        .card p { color: var(--text-muted); margin-bottom: 1rem; }
+        .card p { color: var(--text-muted); margin-bottom: 1rem; text-align: justify; }
         .card ul { margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem; }
         .card li { margin-bottom: 0.8rem; color: var(--text-muted); }
 
         .case-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 1.5rem; }
-        .case-header .logo-container { width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--accent); display: flex; justify-content: center; align-items: center; background: var(--bg-color); overflow: hidden; box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); }
+        .case-header .logo-container { width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--accent); display: flex; justify-content: center; align-items: center; background: var(--bg-color); overflow: hidden; box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); flex-shrink: 0;}
         .case-header img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
         .case-header i { font-size: 2.5rem; color: var(--accent); }
         .project-image { width: 100%; max-height: 450px; object-fit: cover; border-radius: 12px; margin-top: 1.5rem; border: 1px solid var(--glass-border); }
 
-        /* --- Nova Seção: Linha do Tempo (Resumo Profissional) --- */
+        /* --- Timeline (Resumo) --- */
         .timeline-container { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem; margin-bottom: 3rem; }
         .resume-item { border-left: 2px solid var(--accent); padding-left: 1.5rem; margin-bottom: 2rem; position: relative; }
         .resume-item:last-child { margin-bottom: 0; }
@@ -149,15 +149,22 @@
                 <div class="case-header">
                     <div class="logo-container"><img src="logo-comprasia.svg" alt="ComprasIA"></div>
                     <div>
-                        <h3>Case ComprasIA: Monitoramento com IA</h3>
+                        <h3>Case ComprasIA: Monitoramento e Conformidade com IA</h3>
                         <p style="color: var(--accent); font-weight: bold;">Plataforma SaaS | Lei nº 14.133/2021</p>
                     </div>
                 </div>
-                <p>Estruturação de fluxos complexos de automação e visibilidade em tempo real do comportamento das IAs em múltiplos ambientes (DEV, AMOSTRA, HML e PRODUÇÃO), garantindo conformidade com a Nova Lei de Licitações.</p>
+                <h4>O Cenário & O Desafio</h4>
+                <p>O desenvolvimento do sistema "ComprasIA" exigia rigor absoluto em compliance com a Nova Lei de Licitações. O desafio era estruturar fluxos complexos de automação e dar visibilidade em tempo real ao comportamento das Inteligências Artificiais em múltiplos ambientes (DEV, AMOSTRA, HML e PRODUÇÃO), diagnosticando falhas e sucessos operacionais de forma ágil.</p>
+                <h4>A Solução</h4>
+                <p>Implementei um sistema robusto de orquestração de dados e métricas gerenciais. Estruturei painéis de observabilidade para acompanhamento da saúde da IA e apliquei governança técnica na esteira de desenvolvimento de novas features (como o "Compra Match").</p>
+                <h4>Frentes de Atuação:</h4>
                 <ul>
-                    <li><strong>Dashboards:</strong> Criação de filtros no Grafana para monitorar logs de interação dos LLMs.</li>
-                    <li><strong>Automação (n8n):</strong> Troubleshooting avançado e orquestração de workflows.</li>
+                    <li><strong>Inteligência de Dados e Dashboards:</strong> Criação e ajuste de filtros no Grafana para monitorar os logs de interação dos LLMs, categorizando processos analisados e taxas de sucesso/falha institucionais.</li>
+                    <li><strong>Automação de Fluxos (n8n):</strong> Troubleshooting avançado e orquestração de workflows. Atuação cirúrgica na correção de requisições web (nós de HTTP Request), otimizando o tráfego de dados.</li>
+                    <li><strong>Gestão Ágil (Jira):</strong> Estruturação de épicos, títulos e descrições detalhadas no Jira para coordenar a evolução da plataforma e organizar o product backlog.</li>
                 </ul>
+                <h4>O Impacto</h4>
+                <p>Garantia de conformidade jurídica das operações geradas por IA, com total transparência nos painéis de controle. O acompanhamento via Grafana permitiu visualizar centenas de interações simultâneas, facilitando tomadas de decisão rápidas e precisas pela liderança.</p>
                 <img src="grafana.jpg" alt="Dashboard Grafana ComprasIA" class="project-image">
             </div>
 
@@ -169,11 +176,18 @@
                         <p style="color: var(--accent-purple); font-weight: bold;">Brasal Refrigerantes | PMO de Inovação</p>
                     </div>
                 </div>
-                <p>Idealizei e estruturei o departamento GEIT para atuar como um hub de transformação digital, conectando Finanças e TI.</p>
+                <h4>O Cenário & O Desafio</h4>
+                <p>A Diretoria Financeira da Brasal, coração das operações corporativas, exigia alto nível de governança e precisão. O desafio era atuar como ponte entre Finanças e TI para conectar a solidez tradicional com a agilidade das novas tecnologias, eliminando gargalos operacionais e criando uma arquitetura orientada a dados.</p>
+                <h4>A Solução</h4>
+                <p>Idealizei e estruturei o departamento de Gestão Estratégica de Inovação Tecnológica (GEIT) para atuar como um hub de transformação digital interno. Apliquei Design Thinking e Lean Inception para mapear as raízes dos problemas e repensar a forma de trabalho da diretoria.</p>
+                <h4>Frentes de Atuação:</h4>
                 <ul>
-                    <li><strong>Inteligência Artificial:</strong> Liderança de projeto inovador com IA em parceria com a UCB.</li>
-                    <li><strong>Integração Logística:</strong> Implantação de sistema RFID para acesso de veículos.</li>
+                    <li><strong>Orquestração e Automação de Fluxos:</strong> Desenho de rotinas para substituir processos lentos, liberando o time para análises de alto nível.</li>
+                    <li><strong>Inteligência Artificial na Logística:</strong> Liderança de um projeto inovador com IA em parceria com a UCB para automação de paleteiras.</li>
+                    <li><strong>Integração Logística:</strong> Implantação de sistema com tecnologia RFID para automação do acesso de veículos e integração com ERPs nativos.</li>
                 </ul>
+                <h4>O Impacto</h4>
+                <p>A implementação representou um marco de maturidade operacional, provando que a tecnologia alinhada estrategicamente é o principal motor de eficiência, redução de custos operacionais e escalabilidade corporativa.</p>
                 <img src="projeto-brasal.jpg" alt="Projeto Brasal e UCB" class="project-image">
             </div>
 
@@ -181,22 +195,42 @@
                 <div class="case-header">
                     <div class="logo-container"><i class="fas fa-project-diagram"></i></div>
                     <div>
-                        <h3>Case Qualidade: Estruturação Ágil</h3>
+                        <h3>Case Qualidade: Estruturação Ágil de Backlogs</h3>
                         <p style="color: var(--text-main); font-weight: bold;">Sinerji Gestão e Sistemas</p>
                     </div>
                 </div>
-                <p>Implementação de framework ágil rigoroso associado a um SGQ. Redução drástica de 70% na taxa de erros e retrabalho (bugs) através da reestruturação do fluxo de QA e refinamento de backlogs.</p>
+                <h4>O Cenário & O Desafio</h4>
+                <p>A gestão simultânea de múltiplos projetos de desenvolvimento frequentemente gera gargalos no fluxo de aprovação e inconsistências técnicas. O desafio central era blindar as entregas da equipe sem engessar a velocidade das sprints.</p>
+                <h4>A Solução</h4>
+                <p>Implementação de um framework ágil rigoroso associado a um novo Sistema de Gestão da Qualidade (SGQ). Atuei na liderança das cerimônias (Scrum/Kanban) focando na facilitação e na remoção ativa de impedimentos.</p>
+                <h4>Frentes de Atuação:</h4>
+                <ul>
+                    <li><strong>Garantia de Qualidade (QA):</strong> Reestruturação do fluxo de aprovação de tarefas, inserindo testes funcionais e de regressão como requisitos obrigatórios antes do Go-Live.</li>
+                    <li><strong>Sinergia Técnica e Negócio:</strong> Refinamento contínuo do backlog junto aos POs, garantindo documentação clara no Confluence e priorização orientada a valor.</li>
+                </ul>
+                <h4>O Impacto</h4>
+                <p>Redução drástica de <strong>70% na taxa de erros e retrabalho</strong> (bugs), otimizando o Lead Time das entregas críticas e aumentando exponencialmente a "velocity" da equipe técnica.</p>
             </div>
 
             <div class="card tilt-card hidden hover-target">
                 <div class="case-header">
                     <div class="logo-container"><i class="fas fa-folder-open"></i></div>
                     <div>
-                        <h3>Case Digitalização: "Arquivo Morto"</h3>
+                        <h3>Case Digitalização: Sistema "Arquivo Morto"</h3>
                         <p style="color: var(--text-main); font-weight: bold;">Secretaria de Educação</p>
                     </div>
                 </div>
-                <p>Desenvolvimento Full-Stack de uma solução para digitalizar o acervo histórico, reduzindo o tempo de busca de documentos físicos de horas para segundos.</p>
+                <h4>O Cenário & O Desafio</h4>
+                <p>O gerenciamento de documentos de ex-alunos era 100% analógico. Procurar fichas fisicamente no "arquivo morto" resultava em horas de buscas manuais, tornando o atendimento lento e propenso a erros.</p>
+                <h4>A Solução</h4>
+                <p>Projetei e desenvolvi do zero uma solução de software (banco de dados e interface) para digitalizar o acervo, vinculando registros físicos a coordenadas digitais exatas dentro da sala de arquivos.</p>
+                <h4>Frentes de Atuação:</h4>
+                <ul>
+                    <li><strong>Desenvolvimento Full-Stack:</strong> Estruturação de banco de dados relacional e criação de uma interface intuitiva para servidores sem conhecimento tecnológico operarem.</li>
+                    <li><strong>Otimização de Fluxo de Suporte:</strong> Introdução de boas práticas de chamados técnicos para a equipe administrativa.</li>
+                </ul>
+                <h4>O Impacto</h4>
+                <p>O tempo médio de busca por documentos caiu de horas para <strong>poucos segundos</strong>. O projeto eliminou gargalos burocráticos e otimizou radicalmente o atendimento ao público.</p>
                 <img src="sec-educacao.jpg" alt="Projeto Arquivo Morto" class="project-image" onerror="this.style.display='none'">
             </div>
 
@@ -204,36 +238,42 @@
                 <div class="case-header">
                     <div class="logo-container"><i class="fas fa-server"></i></div>
                     <div>
-                        <h3>Case Infraestrutura: Continuidade</h3>
+                        <h3>Case Infraestrutura: Continuidade Operacional</h3>
                         <p style="color: var(--text-main); font-weight: bold;">Arte Foto Formaturas</p>
                     </div>
                 </div>
-                <p>Suporte N1 e N2 focado na redução do tempo de inatividade (downtime), executando manutenção preventiva e resolvendo incidentes críticos em redes corporativas.</p>
+                <h4>O Cenário & O Desafio</h4>
+                <p>Em ambientes operacionais de alto volume, o tempo de inatividade sistêmica (downtime) representa prejuízo imediato. O desafio era modernizar a base tecnológica e manter a agilidade do suporte.</p>
+                <h4>A Solução</h4>
+                <p>Atuei como ponto focal preventivo e reativo para manter todo o parque tecnológico estável e os colaboradores produtivos, com foco em métricas de resolução ágil.</p>
+                <h4>Frentes de Atuação:</h4>
+                <ul>
+                    <li><strong>Suporte Especializado (N1 e N2):</strong> Diagnóstico ágil e resolução de incidentes críticos envolvendo hardware, software e redes corporativas.</li>
+                    <li><strong>Manutenção Preventiva:</strong> Execução de planos de revisão, prolongando a vida útil dos equipamentos.</li>
+                </ul>
+                <h4>O Impacto</h4>
+                <p>Continuidade operacional garantida e minimização do impacto de falhas sistêmicas na rotina da empresa, permitindo foco total nas entregas core do negócio.</p>
             </div>
         </section>
 
         <section id="resumo-cv" style="margin-top: 5rem;">
             <h2 class="section-title hidden">Resumo de Trajetória Profissional</h2>
-            
             <div class="timeline-container hidden">
                 <div class="resume-item">
                     <h4>Assistente de Gestão de Projetos / Scrum Master</h4>
                     <span class="company">Sinerji Gestão e Sistemas</span>
                     <span class="date">Maio 2024 - Presente</span>
                 </div>
-                
                 <div class="resume-item">
                     <h4>PMO de Inovação & Transformação Digital</h4>
                     <span class="company">Brasal Refrigerantes</span>
                     <span class="date">Out 2023 - Out 2024</span>
                 </div>
-
                 <div class="resume-item">
                     <h4>Técnico em Informática / Suporte Especializado</h4>
                     <span class="company">Arte Foto Formaturas</span>
                     <span class="date">Jan 2022 - Out 2023</span>
                 </div>
-
                 <div class="resume-item">
                     <h4>Estagiário em Análise e Desenvolvimento</h4>
                     <span class="company">Secretaria de Educação</span>
